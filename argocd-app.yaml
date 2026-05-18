@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: bootcamp-api
+  namespace: argocd
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/RonaldT1/ronald-bootcamp-gitops.git
+    path: .
+    targetRevision: main
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bootcamp
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
