@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 711387135481.dkr.ecr.us-east-1.amazonaws.com/bootcamp-api
-  tag: does-not-exist
+  tag: latest
   pullPolicy: IfNotPresent
 
 service:
