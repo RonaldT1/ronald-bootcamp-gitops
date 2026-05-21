@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+
+metadata:
+  name: bootcamp-worker
+  namespace: bootcamp
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: bootcamp-worker
+
+  strategy:
+    blueGreen:
+      activeService: bootcamp-worker-active
+      previewService: bootcamp-worker-preview
+
+      autoPromotionEnabled: false
+
+      scaleDownDelaySeconds: 600
+
+      prePromotionAnalysis:
+        templates:
+          - templateName: db-migration-ok
+
+  template:
+    metadata:
+      labels:
+        app: bootcamp-worker
+
+    spec:
+      containers:
+        - name: worker
+          image: nginx:stable
+
+          ports:
+            - containerPort: 80
