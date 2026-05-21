@@ -2,13 +2,13 @@ replicaCount: 2
 
 image:
   repository: 711387135481.dkr.ecr.us-east-1.amazonaws.com/bootcamp-api
-  tag: latest
+  tag: day12
   pullPolicy: IfNotPresent
 
 service:
   type: ClusterIP
   port: 80
-  targetPort: 3000
+  targetPort: 8080
 
 resources:
   requests:

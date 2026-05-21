@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app.kubernetes.io/name: bootcamp-api
   endpoints:
     - port: http
       path: /metrics
