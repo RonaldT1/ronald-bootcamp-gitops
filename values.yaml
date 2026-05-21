@@ -2,7 +2,7 @@ replicaCount: 2
 
 image:
   repository: 711387135481.dkr.ecr.us-east-1.amazonaws.com/bootcamp-api
-  tag: day12
+  tag: day12-v2
   pullPolicy: IfNotPresent
 
 service:
